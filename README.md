@@ -20,16 +20,16 @@ One-click deploy to Heroku:
 
 ## Features
 
-* Create and manage multiple mailing lists;
-* Import lists from other providers (csv files or paste email addresses);
-* Create reusable email templates;
-* Customize sign up pages (subscribe, unsubscribe, thank you page, etc.);
-* Default double opt-in for sign ups;
-* Schedule email campaign to send on a specific date and time;
-* Track email opens and clicks;
-* Change link URL after email is sent;
-* Reports with geolocation;
-* Compatible with Mailgun, SendGrid, Mandrill, or any other SMTP email service.
+- Create and manage multiple mailing lists;
+- Import lists from other providers (csv files or paste email addresses);
+- Create reusable email templates;
+- Customize sign up pages (subscribe, unsubscribe, thank you page, etc.);
+- Default double opt-in for sign ups;
+- Schedule email campaign to send on a specific date and time;
+- Track email opens and clicks;
+- Change link URL after email is sent;
+- Reports with geolocation;
+- Compatible with Mailgun, SendGrid, Mandrill, or any other SMTP email service.
 
 ## Quickstart
 
@@ -68,19 +68,19 @@ PS: Campaign scheduling will not work out-of-the-box. You need to install a mess
 
 ## Tech Specs
 
-* Python 3.6
-* Django 2.1
-* PostgreSQL 10
-* Celery 4.2
-* RabbitMQ 3.7
-* Bootstrap 4 
-* jQuery 3.3
+- Python 3.6
+- Django 2.1
+- PostgreSQL 10
+- Celery 4.2
+- RabbitMQ 3.7
+- Bootstrap 4
+- jQuery 3.3
 
-PostgreSQL and RabbitMQ are soft dependencies. Other databases (supported by Django) can easily be used as well as other 
+PostgreSQL and RabbitMQ are soft dependencies. Other databases (supported by Django) can easily be used as well as other
 message broker compatible with Celery.
 
-The jQuery library is more of a Bootstrap dependency. There is very little JavaScript code in the project. For the most 
-part the code base is just plain Django and HTML templates. 
+The jQuery library is more of a Bootstrap dependency. There is very little JavaScript code in the project. For the most
+part the code base is just plain Django and HTML templates.
 
 Complete list of Python dependencies can be found in the requirements files.
 
@@ -101,3 +101,13 @@ Here is how my sign up page looks like: [sibt.co/newsletter](https://sibt.co/new
 ## License
 
 The source code is released under the [MIT License](https://github.com/vitorfs/colossus/blob/master/LICENSE).
+
+## git commands
+
+git remote rename origin destination
+git remote add origin https ...
+
+## postgres
+
+GRANT ALL PRIVILEGES ON DATABASE colossus TO postgres;
+GRANT ALL PRIVILEGES ON DATABASE colossus TO jenkins;
