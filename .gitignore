@@ -108,3 +108,6 @@ venv.bak/
 .DS_Store
 
 apache.conf
+
+celerybeat-schedule
+celerybeat.pid

@@ -210,7 +210,7 @@ GEOIP_PATH = os.path.join(BASE_DIR, "bin/GeoLite2")
 
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 
-CELERY_BROKER_URL = os.environ.get("CELERY_BROKER_URL", "amqp://localhost")
+CELERY_BROKER_URL = os.environ.get("CELERY_BROKER_URL", "redis://localhost:6379")
 
 CELERY_BEAT_SCHEDULE = {
     "send-scheduled-campaigns": {
@@ -235,3 +235,6 @@ COLOSSUS_HTTPS_ONLY = os.environ.get("COLOSSUS_HTTPS_ONLY", False)
 MAILGUN_API_KEY = os.environ.get("MAILGUN_API_KEY", "")
 
 MAILGUN_API_BASE_URL = os.environ.get("MAILGUN_API_BASE_URL", "")
+
+MAILJET_API_KEY = os.environ.get("MAILJET_API_KEY", "")
+MAILJET_API_SECRET = os.environ.get("MAILJET_API_SECRET", "")
