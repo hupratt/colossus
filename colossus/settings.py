@@ -5,7 +5,6 @@ from django.contrib.messages import constants as messages_constants
 
 import dj_database_url
 from celery.schedules import crontab
-from decouple import Csv, config
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -14,9 +13,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # CORE SETTINGS
 # ==============================================================================
 
-SECRET_KEY = config("SECRET_KEY", default=string.ascii_letters)
 
-DEBUG = config("DEBUG", default=False, cast=bool)
+SECRET_KEY = os.environ.get("SECRET_KEY")
+
+DEBUG = os.environ.get("DEBUG", False)
 
 
 INSTALLED_APPS = [
@@ -100,9 +100,9 @@ TEMPLATES = [
 # INTERNATIONALIZATION AND LOCALIZATION SETTINGS
 # ==============================================================================
 
-LANGUAGE_CODE = config("LANGUAGE_CODE", default="en-us")
+LANGUAGE_CODE = os.environ.get("LANGUAGE_CODE", "en-us")
 
-TIME_ZONE = config("TIME_ZONE", default="UTC")
+TIME_ZONE = os.environ.get("TIME_ZONE", "Europe/Luxembourg")
 
 USE_I18N = True
 
@@ -148,22 +148,22 @@ PRIVATE_MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media/private")
 
 EMAIL_SUBJECT_PREFIX = "[Colossus] "
 
-SERVER_EMAIL = config("SERVER_EMAIL", default="root@localhost")
+SERVER_EMAIL = os.environ.get("SERVER_EMAIL", "root@localhost")
 
-DEFAULT_FROM_EMAIL = config("DEFAULT_FROM_EMAIL", default="webmaster@localhost")
+DEFAULT_FROM_EMAIL = os.environ.get("DEFAULT_FROM_EMAIL", "webmaster@localhost")
 
-EMAIL_BACKEND = config(
-    "EMAIL_BACKEND", default="django.core.mail.backends.console.EmailBackend"
+EMAIL_BACKEND = os.environ.get(
+    "EMAIL_BACKEND", "django.core.mail.backends.console.EmailBackend"
 )
-EMAIL_HOST = config("EMAIL_HOST", default="localhost")
+EMAIL_HOST = os.environ.get("EMAIL_HOST", "localhost")
 
-EMAIL_PORT = config("EMAIL_PORT", default=587, cast=int)
+EMAIL_PORT = os.environ.get("EMAIL_PORT", 587)
 
-EMAIL_HOST_USER = config("EMAIL_HOST_USER", default="root")
+EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER", "root")
 
-EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD", default="")
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD", "")
 
-EMAIL_USE_TLS = config("EMAIL_USE_TLS", default=True, cast=bool)
+EMAIL_USE_TLS = os.environ.get("EMAIL_USE_TLS", True)
 
 
 # ==============================================================================
@@ -210,7 +210,7 @@ GEOIP_PATH = os.path.join(BASE_DIR, "bin/GeoLite2")
 
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 
-CELERY_BROKER_URL = config("CELERY_BROKER_URL", default="amqp://localhost")
+CELERY_BROKER_URL = os.environ.get("CELERY_BROKER_URL", "amqp://localhost")
 
 CELERY_BEAT_SCHEDULE = {
     "send-scheduled-campaigns": {
@@ -223,15 +223,15 @@ CELERY_BEAT_SCHEDULE = {
     },
 }
 
-CELERY_TASK_ALWAYS_EAGER = config("CELERY_TASK_ALWAYS_EAGER", default=True, cast=bool)
+CELERY_TASK_ALWAYS_EAGER = os.environ.get("CELERY_TASK_ALWAYS_EAGER", True)
 
 
 # ==============================================================================
 # FIRST-PARTY APPS SETTINGS
 # ==============================================================================
 
-COLOSSUS_HTTPS_ONLY = config("COLOSSUS_HTTPS_ONLY", default=False, cast=bool)
+COLOSSUS_HTTPS_ONLY = os.environ.get("COLOSSUS_HTTPS_ONLY", False)
 
-MAILGUN_API_KEY = config("MAILGUN_API_KEY", default="")
+MAILGUN_API_KEY = os.environ.get("MAILGUN_API_KEY", "")
 
-MAILGUN_API_BASE_URL = config("MAILGUN_API_BASE_URL", default="")
+MAILGUN_API_BASE_URL = os.environ.get("MAILGUN_API_BASE_URL", "")
