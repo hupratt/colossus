@@ -111,3 +111,9 @@ git remote add origin https ...
 
 GRANT ALL PRIVILEGES ON DATABASE colossus TO postgres;
 GRANT ALL PRIVILEGES ON DATABASE colossus TO jenkins;
+GRANT ALL PRIVILEGES ON DATABASE colossus TO celery;
+ALTER ROLE celery WITH LOGIN;
+
+## postfix
+
+echo "This email confirms that Postfix is working" | mail -s "Testing Posfix" hprattdo@gmail.com

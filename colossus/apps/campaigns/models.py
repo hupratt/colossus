@@ -396,7 +396,7 @@ class Email(models.Model):
 
     def enable_open_tracking(self):
         current_site = get_current_site(request=None)
-        protocol = 'http'
+        protocol = 'https'
         domain = current_site.domain
         track_url = '%s://%s/track/open/%s/{{uuid}}/' % (protocol, domain, self.uuid)
         soup = BeautifulSoup(self.template_content, 'html.parser')
