@@ -7,6 +7,7 @@ After=network.target
 Type=simple
 User=celery
 Group=celery
+ExecStartPre=/bin/mkdir -p /var/run/celery/colossus/
 EnvironmentFile=/home/ubuntu/Dev/colossus/celery/celery.conf
 WorkingDirectory=/home/ubuntu/Dev/colossus/
 ExecStart=/bin/sh -c '${CELERY_BIN} \
